@@ -12,33 +12,30 @@ struct Node{
 class BinaryTree{
   public:
     void insertNode(Node*, int);
-    void preOrder(Node*);
-    void inOrder(Node*);
-    void postOrder(Node*);
-    Node *getRoot()
-    {return this->root;}
-  private:
+    void PreOrder(Node*);
+    void InOrder(Node*);
+    void PostOrder(Node*);
     Node *root = nullptr;
 };
 
 int main(){
   
     BinaryTree *tree = new BinaryTree();
-    tree->insertNode(tree->getRoot(), 10);
-    tree->insertNode(tree->getRoot(), 20);
-    tree->insertNode(tree->getRoot(), 30);
+    tree->insertNode(tree->root, 10);
+    tree->insertNode(tree->root, 20);
+    tree->insertNode(tree->root, 30);
     
     cout <<"List of nodes using In Order method:\n";
-    tree->inOrder(tree->getRoot());
+    tree->InOrder(tree->root);
 
     return 0;
 }
 
 /* Inserts node into the Binary Tree */
 void BinaryTree::insertNode(Node *node, int data){
-  if(!root){ //If the tree is empty, add a root
+  if(!root){ //If the tree is empty, add a root node
     root = new Node(data);
-  } else if(node){ //If the tree contains a root, then traverse
+  } else if(node){ //If the tree contains a root node, then traverse through the tree
     if(data > node->data){
       insertNode(node->right, data);
     } else {
@@ -50,10 +47,30 @@ void BinaryTree::insertNode(Node *node, int data){
 }
 
 /* Prints nodes using InOrder method */
-void BinaryTree::inOrder(Node *root){
+void BinaryTree::InOrder(Node *root){
     if(root){
         inOrder(root->left);
         cout << root->data <<" ";
         inOrder(root->right);
+    }
+}
+
+
+/* Prints nodes using PreOrder method */
+void BinaryTree::PreOrder(Node *root){
+    if(root){
+        cout << root->data <<" ";
+        inOrder(root->left);
+        inOrder(root->right);
+    }
+}
+
+
+/* Prints nodes using PostOrder method */
+void BinaryTree::PostOrder(Node *root){
+    if(root){
+        inOrder(root->left);
+        inOrder(root->right);
+        cout << root->data <<" ";
     }
 }
