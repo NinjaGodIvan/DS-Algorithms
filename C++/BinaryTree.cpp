@@ -47,30 +47,30 @@ void BinaryTree::insertNode(Node *node, int data){
 }
 
 /* Prints nodes using InOrder method */
-void BinaryTree::InOrder(Node *root){
-    if(root){
-        inOrder(root->left);
-        cout << root->data <<" ";
-        inOrder(root->right);
+void BinaryTree::InOrder(Node *node){
+    if(node){
+        inOrder(node->left);
+        cout << node->data <<" ";
+        inOrder(node->right);
     }
 }
 
 
 /* Prints nodes using PreOrder method */
-void BinaryTree::PreOrder(Node *root){
-    if(root){
-        cout << root->data <<" ";
-        inOrder(root->left);
-        inOrder(root->right);
+void BinaryTree::PreOrder(Node *node){
+    if(node){
+        cout << node->data <<" ";
+        inOrder(node->left);
+        inOrder(node->right);
     }
 }
 
 
 /* Prints nodes using PostOrder method */
-void BinaryTree::PostOrder(Node *root){
-    if(root){
-        inOrder(root->left);
-        inOrder(root->right);
-        cout << root->data <<" ";
+void BinaryTree::PostOrder(Node *node){
+    if(node){
+        inOrder(node->left);
+        inOrder(node->right);
+        cout << node->data <<" ";
     }
 }
