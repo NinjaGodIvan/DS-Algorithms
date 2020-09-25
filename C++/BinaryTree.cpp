@@ -21,12 +21,21 @@ class BinaryTree{
 int main(){
   
     BinaryTree *tree = new BinaryTree();
-    tree->insertNode(tree->root, 10);
     tree->insertNode(tree->root, 20);
+    tree->insertNode(tree->root, 10);
+    tree->insertNode(tree->root, 40);
     tree->insertNode(tree->root, 30);
     
     cout <<"List of nodes using In Order method:\n";
     tree->InOrder(tree->root);
+    cout << endl << endl;
+    
+    cout <<"List of nodes using Pre Order method:\n";
+    tree->PreOrder(tree->root);
+    cout << endl << endl;
+    
+    cout <<"List of nodes using Post Order method:\n";
+    tree->PostOrder(tree->root);
 
     return 0;
 }
@@ -35,23 +44,27 @@ int main(){
 void BinaryTree::insertNode(Node *node, int data){
   if(!root){ //If the tree is empty, add a root node
     root = new Node(data);
-  } else if(node){ //If the tree contains a root node, then traverse through the tree
-    if(data > node->data){
-      insertNode(node->right, data);
-    } else {
-      insertNode(node->left, data);
+  } else { //If the tree contains a root node, then traverse through the tree
+        if(data > node->data){
+            if(node->right)
+                insertNode(node->right, data);
+            else
+                node->right = new Node(data);
+        } else {
+            if(node->left)
+                insertNode(node->left, data);
+            else 
+                node->left = new Node(data);
+        }
     }
-  } else { //Adds a node
-      node = new Node(data);
-  }
 }
 
 /* Prints nodes using InOrder method */
 void BinaryTree::InOrder(Node *node){
     if(node){
-        inOrder(node->left);
+        InOrder(node->left);
         cout << node->data <<" ";
-        inOrder(node->right);
+        InOrder(node->right);
     }
 }
 
@@ -60,8 +73,8 @@ void BinaryTree::InOrder(Node *node){
 void BinaryTree::PreOrder(Node *node){
     if(node){
         cout << node->data <<" ";
-        inOrder(node->left);
-        inOrder(node->right);
+        PreOrder(node->left);
+        PreOrder(node->right);
     }
 }
 
@@ -69,8 +82,8 @@ void BinaryTree::PreOrder(Node *node){
 /* Prints nodes using PostOrder method */
 void BinaryTree::PostOrder(Node *node){
     if(node){
-        inOrder(node->left);
-        inOrder(node->right);
+        PostOrder(node->left);
+        PostOrder(node->right);
         cout << node->data <<" ";
     }
 }
