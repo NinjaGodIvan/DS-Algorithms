@@ -65,7 +65,8 @@ public class Playground {
 		}
 		System.out.println();
 		
-		selectionSort(arr);
+		//selectionSort(arr);
+		bubbleSort(arr);
 		
 		//After sorting the array
 		System.out.println("After sort:");
