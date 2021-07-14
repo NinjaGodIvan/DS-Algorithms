@@ -28,6 +28,31 @@ public class Playground {
 		}
 		
 	}
+	
+	//Sorts the array using bubble sort (Worst Method)
+	public static void bubbleSort(int arr[]) {
+		
+		//Repeats until the array is sorted
+		while(true) {
+			
+			//Checks if the elements are swapped at least once in the iteration
+			boolean swapped = false;
+			
+			//Iterates through the array
+			for(int i = 0; i < arr.length-1; i++) {
+				if(arr[i] > arr[i+1]) {
+					int temp = arr[i+1];
+					arr[i+1] = arr[i];
+					arr[i] = temp;
+					swapped = true;
+				}
+			}
+			
+			//Stop when the array is sorted
+			if(!swapped)
+				break;
+		}
+	}
 
 	public static void main(String[] args) {
 		
