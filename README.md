@@ -1,3 +1,3 @@
 # Data Structures & Algorithms
 
-Just utilizing my data structures and algorithms knowledge for interviews, challenges, and more.
+Written in C++ and Java so far.
